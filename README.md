@@ -21,3 +21,10 @@ AWS Instance(ec2) 확인하기 - https://freesunny.tistory.com/21
 ### 시퀸스
 1. 인증 시퀸스 받기 (AWS CLI활용)
 2. 
+
+
+### 참고 사이트
+1. boto3 라이브러리
+https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ec2.html#instance
+2. AWS CLI 인증관련
+https://www.daleseo.com/aws-cli-configure/
