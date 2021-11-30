@@ -1,3 +1,11 @@
+import boto3
+
+ec2 = boto3.resource('ec2')
+
+for instance in ec2.instances.all():
+    print(instance.instance_id , instance.state, instance.instance_type, instance.ami_launch_index, instance.monitoring)
+
+'''
 def MainMenu():
     print("--------------------------------------------------\n")
     print("1. list instance             2. available zones\n")
@@ -15,6 +23,9 @@ def SelectMenu():
 #1. list instance
 def ListInstance():
     print("ListInstance\n")
+    for instance in ec2.instances.all():
+        print(instance.instance_id , instance.state, instance.instance_type, instance.ami_launch_index, instance.monitoring)
+
 
 def AvailableZone():
     print("AvailableZone\n")
@@ -63,3 +74,4 @@ while True :
     Number = SelectMenu()
     
 print("프로그램 종료\n") 
+'''
