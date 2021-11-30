@@ -16,3 +16,8 @@ Window 10
 
 ### 간단한 튜토리얼
 AWS Instance(ec2) 확인하기 - https://freesunny.tistory.com/21 
+
+
+### 시퀸스
+1. 인증 시퀸스 받기 (AWS CLI활용)
+2. 
