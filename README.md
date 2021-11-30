@@ -11,5 +11,8 @@ Window 10
 
 ### 설치파일 
 1. boto3( pip install boto3)
-2. AWS CLI
+2. AWS CLI - https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/install-cliv2-windows.html 참고
 3. python3
+
+### 간단한 튜토리얼
+AWS Instance(ec2) 확인하기 - https://freesunny.tistory.com/21 
