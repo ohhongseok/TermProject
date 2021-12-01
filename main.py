@@ -4,35 +4,14 @@ import boto3
 ec2 = boto3.resource('ec2')
 ec2client = boto3.client('ec2')
 
-print("Create EC2 INSTANCE")
-
-ec2client.run_instances(
-    ImageId="ami-0d718c3d715cec4a7",
-    MinCount=1,
-    MaxCount=1,
-    InstanceType = "t2.micro",
-    KeyName="aws1"
-)
-
-
-'''
-response = ec2client.describe_instances()
-for instances in response['Reservations']:
-     print(instances)
-'''
-
+# 이미지 테스트
+# 이미지 id , 이미지 이름, 이미지 오너 다운
 
 '''
 regions = [region['RegionName'] for region in available_region.describe_regions()['Regions']]
 endpoint = [endpoint['Endpoint'] for endpoint in available_region.describe_vpc_endpoints()['Endpoints']]
 print("[Region]: ",regions)
 print("[EndPoint]:",endpoint)
-'''
-
-# 이미지 테스트
-'''
-image = ec2.Image('ami-0f649625b95d5bd72')
-print(image.creation_date)
 '''
 
 '''
@@ -48,7 +27,6 @@ result = ec2client.stop_instances(
 print(result)
 '''
 
-'''
 def MainMenu():
     print("--------------------------------------------------\n")
     print("1. list instance             2. available zones\n")
@@ -102,20 +80,35 @@ def StopInstance():
     
 def CreateInstance():
     print("CreateInstance\n")
+    print("EC2 인스턴스 생성중..")
+
+    ec2client.run_instances(
+        ImageId="ami-0d718c3d715cec4a7",
+        MinCount=1,
+        MaxCount=1,
+        InstanceType = "t2.micro",
+        KeyName="aws1"
+    )
+    print(ec2client.describe_instances()["Reservations"][0]["Instances"][0]["InstanceId"]+"인스턴스 생성 완료")
+
 
 def RebootInstance():
     print("RebootInstance\n")
+    selectid = str(input('Enter instance id : '))
     response = ec2client.reboot_instances(
     InstanceIds=[
         selectid,
     ],
     DryRun=True|False
     )
-    print(result)
+    print(response)
     
 
 def ListImages():
     print("ListImages\n")
+    response = ec2client.describe_images(Owners=['self'])
+    for image in response['Images']:
+        print ("[ImageID] "+image['ImageId']," [Name] "+image['Name']," [Owner] "+image['OwnerId'])
 
 MainMenu()
 
@@ -143,4 +136,3 @@ while True :
     Number = SelectMenu()
     
 print("프로그램 종료\n") 
-'''
