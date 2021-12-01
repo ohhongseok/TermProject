@@ -10,8 +10,8 @@ Window 10
 3. vs code
 
 ### 설치파일 
-1. boto3( pip install boto3)
-2. AWS CLI - https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/install-cliv2-windows.html 참고
+1. boto3
+2. AWS CLI2
 3. python3
 
 ### 간단한 튜토리얼
@@ -20,8 +20,22 @@ AWS Instance(ec2) 확인하기 - https://freesunny.tistory.com/21
 
 ### 시퀸스
 1. 인증 시퀸스 받기 (AWS CLI활용)
-2. 
+2. boto3 라이브러리 다운로드 후 boto3 docmunent 사이트 활용
 
+
+### 구현기능 (완전 추가 후 추가기능 구현 예정)
+1. list instance
+2.  available zones
+3.  start instance
+4.  available region 
+5.  stop instance
+6.  create instance
+7.  reboot instance
+8.  list images
+
+...
+99. quit
+  
 
 ### 참고 사이트
 1. boto3 라이브러리
