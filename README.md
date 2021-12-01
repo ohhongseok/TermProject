@@ -1,6 +1,9 @@
 # TermProject
 Term project repo for Cloud Computing. 
 
+### 프로젝트 목적
+해당 프로젝트 진행을 통해, aws 원격제어 활용
+
 ### 설치 환경
 Window 10
 
