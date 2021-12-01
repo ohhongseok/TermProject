@@ -1,17 +1,35 @@
 import boto3
 
-# ec2 객체 선언부분
+# ec2 객체 모음
 ec2 = boto3.resource('ec2')
-
 ec2client = boto3.client('ec2')
 
+print("Create EC2 INSTANCE")
+
+ec2client.run_instances(
+    ImageId="ami-0d718c3d715cec4a7",
+    MinCount=1,
+    MaxCount=1,
+    InstanceType = "t2.micro",
+    KeyName="aws1"
+)
+
+
+'''
 response = ec2client.describe_instances()
 for instances in response['Reservations']:
      print(instances)
+'''
 
+
+'''
+regions = [region['RegionName'] for region in available_region.describe_regions()['Regions']]
+endpoint = [endpoint['Endpoint'] for endpoint in available_region.describe_vpc_endpoints()['Endpoints']]
+print("[Region]: ",regions)
+print("[EndPoint]:",endpoint)
+'''
 
 # 이미지 테스트
-
 '''
 image = ec2.Image('ami-0f649625b95d5bd72')
 print(image.creation_date)
@@ -54,6 +72,8 @@ def ListInstance():
 
 def AvailableZone():
     print("AvailableZone\n")
+    available_region = ec2client.describe_availability_zones()
+    print(available_region)
 
 def StartInstance():
     print("StartInstance\n")
@@ -67,6 +87,8 @@ def StartInstance():
 
 def AvailableRegions():
     print("AvailableRegions\n")
+    available_region = ec2client.describe_regions()
+    print(available_region)
 
 def StopInstance():
     print("StopInstance\n")
