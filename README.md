@@ -28,3 +28,5 @@ AWS Instance(ec2) 확인하기 - https://freesunny.tistory.com/21
 https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ec2.html#instance
 2. AWS CLI 인증관련
 https://www.daleseo.com/aws-cli-configure/
+
+
