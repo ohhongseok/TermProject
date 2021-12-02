@@ -35,6 +35,10 @@ AWS Instance(ec2) 확인하기 - https://freesunny.tistory.com/21
 6.  create instance
 7.  reboot instance
 8.  list images
+9.  Create Image
+10.  TerminateInstance
+11.  DeleteImg
+12.  Print Volume ID
 
 ...
 99. quit
