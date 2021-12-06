@@ -51,9 +51,11 @@ AWS Instance(ec2) 확인하기 - https://freesunny.tistory.com/21
       - 사용자가 보유한 AMI 이미지의 값을 삭제
 12.  Print Volume ID
       - 현재 사용자가 인스턴스에 연결한 스토리지의 볼륨 Id값을 출력
-21.  Security Group Print
-      - 보안그룹 전체 출력
-22.  Key Pair Info
+13.  Security Group Print
+      - 현재 사용자가 인스턴스에 연결한 보안그룹 출력
+14.  Copy Image
+      - 사용자의 AMI 이미지 복사 및 붙여넣기 수행
+98.  Key Pair Info
       - Print Key Pair
         - 사용자가 보유하고 있는 키페어 출력
       - Create Key Pair
