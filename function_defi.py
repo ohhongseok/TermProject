@@ -44,7 +44,6 @@ def StartInstance():
 def AvailableRegions():
     print("\n")
     print("AvailableRegions\n")
-    available_region = ec2client.describe_regions()
     AvailaleRegionArr = ec2client.describe_regions().get('Regions')
     for RegionInfo in AvailaleRegionArr:
         print("[Region] "+RegionInfo.get("RegionName"),
@@ -67,7 +66,7 @@ def CreateInstance():
     print("\n")
     print("CreateInstance\n")
     print("EC2 인스턴스 생성중..")
-
+    
     ec2client.run_instances(
         ImageId="ami-0d718c3d715cec4a7",
         MinCount=1,
@@ -114,6 +113,22 @@ def CreateImage():
         NoReboot=True
     )
      
+def CopyImage():
+    print("\n")
+    print("Copy AMI\n")
+    
+    setName = str(input('이름 설정 : '))
+    setDescription = str(input("설명 : "))
+    setAMIImage = str(input('AMI 이미지 선택 : '))
+    setRegion = str(input('지역 선택(기본 us-east-2) :'))
+    
+    result = ec2client.copy_image(
+        Name = setName,
+        Description =setDescription,
+        SourceImageId=setAMIImage,
+        SourceRegion=setRegion
+    )
+     
 def TermianteInstance():
     print("\n")
     print("Terminate Instance\n")
@@ -135,15 +150,14 @@ def DeleteImg():
     delImg=ec2client.deregister_image(
         ImageId=selectAMI_ID
     )
-def Volume():
-    print("\n")
-    print("Print Volume ID\n")
-    for volumme in ec2.volumes.all():
-        print(volumme.volume_id)
 
 def Security():
-    securityGroup = ec2client.description
-    print(securityGroup)
+    response = ec2client.describe_instances()
+    for reservation in response['Reservations']:
+        for instance in reservation['Instances']:
+            print("Instance: " + instance['InstanceId'])
+            for securityGroup in instance['SecurityGroups']:
+                print("SG ID: {}, Name: {}".format(securityGroup['GroupId'], securityGroup['GroupName']))
     
 #키페어 관리 부분
 def KeyFunction():
@@ -195,8 +209,15 @@ def DeleteKeyPair():
         print(DelKeyPair+" 삭제 완료")
     except ValueError as m :
         print(m)
-    
-#키페어 관리 부분 끝
+# 볼륨 ID 출력
+def Volume():
+    print("\n")
+    print("Print Volume ID\n")
+    for volumme in ec2.volumes.all():
+        print(volumme.volume_id)
+        
+
+# 볼륨 관리 함수 끝
 
 #기능함수 보조
 #간단한 인스턴스 및 / 이미지 출력 리스트 함수 구현, 메뉴화면 구성 부분
@@ -229,3 +250,11 @@ def KeyPairMenu():
     print("----------------------------------------------------------\n")
     print("---------------------키페어 리스트------------------------\n")
     PrintKeyPair()
+    
+def VolumeMenu():
+    print("----------------------------------------------------------\n")
+    print("--------------------볼륨 관리 메뉴----------------------\n")
+    print("1. 보유 볼륨 출력           2. 볼륨 생성\n")
+    print("3. 보유 볼륨 삭제          99. 나가기\n")
+    print("----------------------------------------------------------\n")
+    print("----------------------------------------------------------\n")

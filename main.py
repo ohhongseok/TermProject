@@ -18,8 +18,8 @@ def MainMenu():
     print("5. stop instance             6. create instance\n")
     print("7. reboot instance           8. list images\n")
     print("9. create image             10. terminate instance\n")
-    print("11.delete AMI Img           12. print-volume\n")
-    print("13.Security                 14. \n")
+    print("11.delete AMI Img           12. Volume\n")
+    print("13.Print InstanceSecurity   14. copy Image\n")
     print("                            98. Key Fair Info\n")
     print("                            99. quit\n")
     print("--------------------------------------------------\n")
@@ -62,7 +62,7 @@ while True :
     elif Number==13:
         function_defi.Security()
     elif Number==14:
-        function_defi.Volume()     
+        function_defi.CopyImage()             
     elif Number==98:
         function_defi.KeyFunction()    
 
