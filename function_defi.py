@@ -169,7 +169,9 @@ def KeyFunction():
         if SelectNum == 1:
             PrintKeyPair()
         elif SelectNum ==2:
-            CreateKeyPair()        
+            CreateKeyPair()   
+        elif SelectNum ==3:
+            DeleteKeyPair()     
         elif SelectNum ==99:
             break   
         KeyMenu()
@@ -201,10 +203,8 @@ def DeleteKeyPair():
     print("\n")
     print("DeleteKeyPair\n")
     KeyPairMenu()
-    DelKeyPair = input("삭제할 키페어 ID 선택 : ")
-    keypairinfo.delecte(
-        KeyPairId=DelKeyPair
-    )
+    DelKeyPair = input("삭제할 키페어 이름 선택 : ")
+    ec2client.delete_key_pair(KeyName=DelKeyPair)
     try:
         print(DelKeyPair+" 삭제 완료")
     except ValueError as m :
